@@ -1,0 +1,59 @@
+# Ekstensi yang dibutuhkan :
+- Laravel Extension Pack (Winnie Lin)
+- Color Highlight
+- code Snap
+- Bootstrap 5 Snippets
+- github Copilot
+- DotENV
+- ES7+ React/Redux/React-Native snippets
+- Auto Close Tag
+- Auto Rename Tag
+- Auto Import
+- Auto Complete Tag
+- IntelliSense for CSS class names in HTML
+- Path Intellisense
+- PHP Extension Pack
+- PHP Intelephense
+- PHP IntelliSense
+- Prettier - Code formatter
+- Svg Preview
+- vscode-icon
+
+
+# CLI untuk artisan make Controller :
+- php artisan make:controller NamaController
+
+# check route list :
+- php artisan route:list
+
+# untuk animation bisa pake :
+- https://animate.style/
+- AOS:
+    - https://michalsnik.github.io/aos/
+
+# Database :
+- Category > Product
+
+# Cara migration :
+- php artisan make:model Category
+- php artisan make:controller CategoryController
+- php artisan make:migration create_categories_table
+- php artisan make:model Category -mc
+
+# Cara migrate :
+- php artisan migrate
+- php artisan migrate:rollback
+- php artisan migrate:refresh
+- php artisan migrate:fresh
+- php artisan migrate:reset
+
+# Cara membuat seeder & Factory :
+- php artisan make:seeder CategorySeeder
+- php artisan make:factory CategoryFactory
+
+# setting .env database :
+- DB_CONNECTION=mysql
+
+# Cara menjalankan seeder :
+- php artisan db:seed --class=CategorySeeder
+=
