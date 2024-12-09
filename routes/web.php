@@ -26,3 +26,4 @@ Route::get('/dashboard', [PagesContoller::class, 'dashboard'])->name('dashboard'
 
 // Category routes
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('/categories/create', [CategoryController::class, 'index'])->name('categories.create');

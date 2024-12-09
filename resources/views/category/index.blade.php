@@ -18,7 +18,10 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Default Table</h5>
+                            <div class="card-title d-flex justify-content-between py-2">
+                                Category List
+                                <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm">Create</a>
+                            </div>
 
                             <!-- Default Table -->
                             <table class="table">
