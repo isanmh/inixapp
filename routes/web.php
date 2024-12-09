@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PagesContoller;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PagesContoller::class, 'homepage']);
 Route::get('/about', [PagesContoller::class, 'about'])->name('about');
 Route::get('/dashboard', [PagesContoller::class, 'dashboard'])->name('dashboard');
+
+// Category routes
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
