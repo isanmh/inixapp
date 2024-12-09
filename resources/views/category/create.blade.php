@@ -29,11 +29,12 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input name="name" type="text" class="form-control">
+                                        <input name="name" type="text" class="form-control"
+                                            value="{{ old('name') }}">
+                                        @error('name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    @error('name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
                                 <div class="row mb-3">
 

@@ -13,6 +13,14 @@
             </nav>
         </div><!-- End Page Title -->
 
+        {{-- flash --}}
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
@@ -38,7 +46,8 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $item->name }}</td>
                                             <td>
-                                                <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="{{ route('categories.edit', $item->id) }}"
+                                                    class="btn btn-warning btn-sm">Edit</a>
                                                 <a href="" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
