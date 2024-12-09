@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    // colomn yang boleh diisi
+    protected $fillable = ['name'];
+
+    // colomn yang tidak boleh diisi
+    // protected $guarded = ['id'];
 }

@@ -24,6 +24,26 @@
                             </div>
 
                             {{-- form --}}
+                            <form action="{{ route('categories.store') }}" method="POST">
+                                @csrf
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input name="name" type="text" class="form-control">
+                                    </div>
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="row mb-3">
+
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary float-end">
+                                            Create
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
