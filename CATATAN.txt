@@ -56,4 +56,14 @@
 
 # Cara menjalankan seeder :
 - php artisan db:seed --class=CategorySeeder
-=
+
+
+# cara clone project dari github :
+- git clone https://github.com/isanmh/inixapp.git
+- composer install
+- setting .env :
+    - copas .env.example ke .env
+- php artisan key:generate
+- php artisan migrate
+- php artisan db:seed --class=CategorySeeder
+- php artisan serve
