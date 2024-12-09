@@ -12,6 +12,8 @@
     {{-- style --}}
     @include('layouts.be_styles')
 
+    @stack('styles')
+
 </head>
 
 <body>
@@ -31,6 +33,8 @@
 
     {{-- scripts --}}
     @include('layouts.be_scripts')
+
+    @stack('scripts')
 
 </body>
 
