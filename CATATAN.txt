@@ -71,3 +71,17 @@
 # pull project dari github :
 - git stash
 - git pull origin main
+
+# Relasi :
+Category > Product
+1 > m (one to many)
+
+Product > Category
+m > 1 (many to one)
+
+# Cara membuat Controller, Model, Resource:
+- php artisan make:controller ProductController -r
+- php artisan make:model Product -m -c -r
+- php artisan make:model Product -mcr
+
+php artisan migrate:fresh

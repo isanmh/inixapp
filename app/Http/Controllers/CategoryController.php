@@ -67,4 +67,11 @@ class CategoryController extends Controller
         return redirect()->route('categories')
             ->with('success', 'Kategori berhasil diupdate');
     }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return redirect()->route('categories')
+            ->with('success', 'Kategori berhasil dihapus');
+    }
 }

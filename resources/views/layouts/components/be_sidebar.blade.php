@@ -9,13 +9,13 @@
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="index.html">
+            <a class="nav-link collapsed" href="{{ route('categories') }}">
                 <i class="bi bi-database"></i>
                 <span>Categories</span>
             </a>
         </li><!-- End Categories Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="index.html">
+            <a class="nav-link collapsed" href="{{ route('product.index') }}">
                 <i class="bi bi-database"></i>
                 <span>Products</span>
             </a>

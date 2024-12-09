@@ -8,7 +8,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Categories</li>
+                    <li class="breadcrumb-item">Products</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <div class="card-title d-flex justify-content-between py-2">
                                 Category List
-                                <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm">Create</a>
+                                <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm">Create</a>
                             </div>
 
                             <!-- Default Table -->
@@ -36,20 +36,26 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Price</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $item)
+                                    @foreach ($products as $item)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $item->image }}</td>
                                             <td>{{ $item->name }}</td>
+                                            <td>{{ $item->category->name }}</td>
+                                            <td>{{ $item->price }}</td>
                                             <td>
-                                                <form action="{{ route('categories.destroy', $item->id) }}" method="POST">
+                                                <form action="{{ route('product.destroy', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('categories.edit', $item->id) }}"
+                                                    <a href="{{ route('product.edit', $item->id) }}"
                                                         class="btn btn-warning btn-sm">Edit</a>
                                                     <button type="submit" onclick="return confirm('Are you sure?')"
                                                         class="btn btn-danger btn-sm">Delete</button>
@@ -60,6 +66,8 @@
                                 </tbody>
                             </table>
                             <!-- End Default Table Example -->
+                            {{-- pagination --}}
+                            {{ $products->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
                 </div>

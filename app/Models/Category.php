@@ -14,4 +14,10 @@ class Category extends Model
 
     // colomn yang tidak boleh diisi
     // protected $guarded = ['id'];
+
+    // relasi one to many
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
