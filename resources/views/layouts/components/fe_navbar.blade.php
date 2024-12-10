@@ -21,7 +21,7 @@
                 </li>
 
             </ul>
-            <a href="#" class="btn btn-outline-primary">Login</a>
+            <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
         </div>
     </div>
 </nav>

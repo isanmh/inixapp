@@ -12,6 +12,10 @@ class CategoryController extends Controller
         // $categories = Category::all();
         // $categories = Category::orderBy('id', 'desc')->get();
         $categories = Category::latest()->get();
+
+        // with trash (data yang terhapus)
+        // $categories = Category::withTrashed()->get();
+
         return view('category.index', compact('categories'));
 
         // cara lain untuk passing data ke view
@@ -70,7 +74,9 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        // $category->delete();
+        $category->forceDelete();
+
         return redirect()->route('categories')
             ->with('success', 'Kategori berhasil dihapus');
     }

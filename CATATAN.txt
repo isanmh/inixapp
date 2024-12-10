@@ -89,3 +89,22 @@ php artisan migrate:fresh
 
 # Symlink Storage :
 - php artisan storage:link
+
+# Cara membuat Login :
+- Brezee : tailwindcss
+- Jestream : LiveWire inertia
+- fortify : auth scaffolding
+- ui : auth scaffolding
+
+# Cara membuat Login :
+composer require laravel/ui
+php artisan ui bootstrap --auth
+npm install && npm run dev
+
+# api.php
+- 127.0.0.1/api/products
+
+# Cara membuat API:
+php artisan make:controller API/ProductApiController
+routes/api.php
+
