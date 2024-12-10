@@ -85,3 +85,7 @@ m > 1 (many to one)
 - php artisan make:model Product -mcr
 
 php artisan migrate:fresh
+- php artisan migrate:fresh --seed
+
+# Symlink Storage :
+- php artisan storage:link

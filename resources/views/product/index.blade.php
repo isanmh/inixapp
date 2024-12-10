@@ -4,7 +4,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Categories Page</h1>
+            <h1>Products Page</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
@@ -14,12 +14,12 @@
         </div><!-- End Page Title -->
 
         {{-- flash --}}
-        @if (session()->has('success'))
+        {{-- @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        @endif
+        @endif --}}
 
         <section class="section">
             <div class="row">
@@ -57,8 +57,7 @@
                                                     @method('DELETE')
                                                     <a href="{{ route('product.edit', $item->id) }}"
                                                         class="btn btn-warning btn-sm">Edit</a>
-                                                    <button type="submit" onclick="return confirm('Are you sure?')"
-                                                        class="btn btn-danger btn-sm">Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -76,3 +75,42 @@
 
     </main><!-- End #main -->
 @endsection
+
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: true,
+                timer: 1500
+            });
+        @endif
+
+        // delete data
+        document.querySelectorAll('.deleteData').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

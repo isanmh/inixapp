@@ -33,7 +33,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'required|string|max:255',
+            'image' => 'nullable|sometimes|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $input = $request->all();
+
+        // logika jika ada image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '-' . $image->getClientOriginalName();
+            // $target = public_path('assets/images');
+            // $image->move($target, $imageName);
+
+            // symlick laravel
+            $image->storeAs('assets/images', $imageName, 'public');
+            $input['image'] = $imageName;
+        } else {
+            $input['image'] = '';
+        }
+
+        Product::create($input);
+        return redirect()->route('product.index')->with('success', 'Product created successfully.');
     }
 
     /**
@@ -49,7 +74,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -57,7 +83,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $input = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'required|string|max:255',
+            'image' => 'nullable|sometimes|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $input = $request->all();
+
+        // logika jika ada image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '-' . $image->getClientOriginalName();
+
+            if ($product->image) {
+                unlink(storage_path('app/public/assets/images/' . $product->image));
+            }
+
+            // symlick laravel
+            $image->storeAs('assets/images', $imageName, 'public');
+            $input['image'] = $imageName;
+        } else {
+            $input['image'] = $product->image;
+        }
+
+        $product->update($input);
+        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -65,6 +118,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if ($product->image) {
+            unlink(storage_path('app/public/assets/images/' . $product->image));
+        }
+        $product->delete();
+        return redirect()
+            ->route('product.index')
+            ->with('success', 'Product deleted successfully.');
     }
 }
