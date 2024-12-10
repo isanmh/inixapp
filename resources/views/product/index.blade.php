@@ -46,18 +46,27 @@
                                 <tbody>
                                     @foreach ($products as $item)
                                         <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $item->image }}</td>
+                                            {{-- <th scope="row">{{ $loop->iteration }}</th> --}}
+                                            <th scope="row">
+                                                {{ $products->firstItem() + $loop->index }}
+                                            </th>
+                                            <td>
+                                                <img src="{{ asset('storage/assets/images/' . $item->image) }}"
+                                                    width="50">
+                                            </td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->category->name }}</td>
-                                            <td>{{ $item->price }}</td>
+                                            <td>Rp. {{ number_format($item->price, 2, ',', '.') }}</td>
                                             <td>
                                                 <form action="{{ route('product.destroy', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <a href="{{ route('product.edit', $item->id) }}"
-                                                        class="btn btn-warning btn-sm">Edit</a>
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                        class="btn btn-warning btn-sm bi bi-pencil"></a>
+                                                    <a href="{{ route('product.show', $item->id) }}"
+                                                        class="btn btn-info btn-sm bi bi-eye"></a>
+                                                    <button type="submit"
+                                                        class="deleteData btn btn-danger btn-sm bi bi-trash"></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -108,6 +117,9 @@
                             text: "Your file has been deleted.",
                             icon: "success"
                         });
+
+                        // submit
+                        e.target.parentElement.submit();
                     }
                 });
             });
