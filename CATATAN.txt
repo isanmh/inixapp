@@ -114,3 +114,8 @@ routes/api.php
 - alur api :
 - Route (api.php) -> Controller (app/http/controller) -> Model (app/model) -> Json
 
+# Cara membuat Auth API (sanctum) :
+- php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider" (5.6)
+
+- php artisan make:controller API/AuthController
+
