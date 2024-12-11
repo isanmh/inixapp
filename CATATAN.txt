@@ -108,3 +108,9 @@ npm install && npm run dev
 php artisan make:controller API/ProductApiController
 routes/api.php
 
+# Alur Framwork Larvel :
+- Route (web.php) -> Controller (app/http/controller) -> Model (app/model) -> View (resources/views)
+
+- alur api :
+- Route (api.php) -> Controller (app/http/controller) -> Model (app/model) -> Json
+

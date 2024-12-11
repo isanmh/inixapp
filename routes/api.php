@@ -17,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 // localhost:8000/api/test
 Route::get('test', [ProductApiController::class, 'test']);
 
+// products Endpoint
 Route::get('products', [ProductApiController::class, 'index']);
+Route::post('products', [ProductApiController::class, 'store']);
+Route::get('products/{id}', [ProductApiController::class, 'show']);
+Route::put('products/{id}', [ProductApiController::class, 'update']);
+Route::delete('products/{id}', [ProductApiController::class, 'destroy']);
+Route::get('products/search/{name}', [ProductApiController::class, 'search']);
