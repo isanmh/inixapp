@@ -119,3 +119,18 @@ routes/api.php
 
 - php artisan make:controller API/AuthController
 
+# cara membuat JWT :
+- buka jwt auth :
+    - https://jwt.io/
+
+- composer require tymon/jwt-auth
+
+- php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+- php artisan jwt:secret
+
+- setting di user model :
+    - use Tymon\JWTAuth\Contracts\JWTSubject;
+    - implements JWTSubject
+
+php artisan make:controller API/AuthJwtController
